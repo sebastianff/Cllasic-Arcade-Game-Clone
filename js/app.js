@@ -43,7 +43,7 @@ var Player = function(x,y) {
     this.y = y;
     
 }
-// Now instantiate your objects.
+// Now instantiate your objectjects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
@@ -81,6 +81,22 @@ Player.prototype.handleInput = function(stroke)
     
 
 }
+
+var Award = function(x,y) {
+    // Variables applied to each of our instances go here,
+    // we've provided one for you to get started
+
+    // The image/sprite for our enemies, this uses
+    // a helper we've provided to easily load images
+    this.sprite = 'images/Gem Blue.png';
+    this.x = x;
+    this.y = y;
+    
+}
+
+Award.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
@@ -99,6 +115,7 @@ for (i=1;i<4;i++)
 {allEnemies.push(new Enemy(3,70*i,randomNumber()*enemySpeed))};
 
 var player = new Player(80,300);
+var award = new Award(20,20);
 
 function randomNumber() {var number = Math.floor((Math.random() * 10) + 1);return number;}
 console.log(randomNumber());
