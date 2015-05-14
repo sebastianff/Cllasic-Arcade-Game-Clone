@@ -81,10 +81,16 @@ var Engine = (function(global) {
     function update(dt) {
         updateEntities(dt);
         for (item in allEnemies)
-                if(player.x - allEnemies[item].x <distance&&allEnemies[item].x - player.x<distance&&player.y - allEnemies[item].y <distance&&allEnemies[item].y - player.x<distance )
+                if( player.x - allEnemies[item].x<distance&&
+                    allEnemies[item].x - player.x<distance&&
+                    player.y - allEnemies[item].y<distance&&
+                    allEnemies[item].y - player.x<distance||
+                    player.y<40 )
            {reset()}
-       
+                //this part of code checks for collisons
+                //the allowed distance from the enemy is defined by distance
     }
+
 
     /* This is called by the update function  and loops through all of the
      * objects within your allEnemies array as defined in app.js and calls
@@ -156,7 +162,7 @@ var Engine = (function(global) {
         });
 
         player.render();
-        award.render();
+       
     }
 
     /* This function does nothing but it could have been a good place to
