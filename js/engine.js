@@ -80,7 +80,10 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        for (item in allEnemies)
+                if(player.x - allEnemies[item].x <distance&&allEnemies[item].x - player.x<distance&&player.y - allEnemies[item].y <distance&&allEnemies[item].y - player.x<distance )
+           {reset()}
+       
     }
 
     /* This is called by the update function  and loops through all of the
@@ -160,7 +163,7 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        // noop
+        player.x = 200;player.y =400;
     }
 
     /* Go ahead and load all of the images we know we're going to need to
