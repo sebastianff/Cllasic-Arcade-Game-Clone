@@ -13,7 +13,10 @@
  * the canvas' context (ctx) object globally available to make writing app.js
  * a little simpler to work with.
  */
-
+var allEnemies;
+  var player;
+  var distance;
+  var Resources;
 var Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
@@ -57,7 +60,7 @@ var Engine = (function(global) {
          * function again as soon as the browser is able to draw another frame.
          */
         win.requestAnimationFrame(main);
-    };
+    }
 
     /* This function does some initial setup that should only occur once,
      * particularly setting the lastTime variable that is required for the
@@ -80,13 +83,13 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        for (item in allEnemies)
-                if( player.x - allEnemies[item].x<distance&&
-                    allEnemies[item].x - player.x<distance&&
-                    player.y - allEnemies[item].y<distance&&
-                    allEnemies[item].y - player.x<distance||
-                    player.y<40 )
-           {reset()}
+        for (var item in allEnemies)
+                if( player.x - allEnemies[item].x < distance &&
+                    allEnemies[item].x - player.x < distance &&
+                    player.y - allEnemies[item].y < distance &&
+                    allEnemies[item].y - player.x < distance ||
+                    player.y < 40 )
+           {reset();}
                 //this part of code checks for collisons
                 //the allowed distance from the enemy is defined by distance
     }
@@ -192,4 +195,3 @@ var Engine = (function(global) {
      */
     global.ctx = ctx;
 })(this);
-        
