@@ -1,6 +1,9 @@
-frontend-nanodegree-arcade-game
-===============================
-
-Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015/l-3072058665/m-3072588797
-
-for self-checking their submission.
+The game is initiated by opening the index.html in your browser.
+The goal of the game is to get to the other side of the screen
+while avoiding bugs.
+You navigate the player with arrow keys.
+You can change the speed of the enemy by changing the enemySpeed variable in the app.js file.
+You can also change the distance the player moves with each keystroke by changing the playerRange
+variable also in the app.js file.
+Any questions? You can reach me on sebastianffarago@gmail.com
+Have Fun!
