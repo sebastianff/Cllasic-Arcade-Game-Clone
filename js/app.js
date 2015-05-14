@@ -43,7 +43,7 @@ var Player = function(x,y) {
     this.sprite = 'images/char-boy.png';
     this.x = x;
     this.y = y;
-    //New Player Class
+    //This creates the new Player Class
     
 }
 // Now instantiate your objectjects.
@@ -101,29 +101,22 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-var enemySpeed = 20;//regulates the speed of the enemies
-allEnemies = [];
+var enemySpeed = 60;//regulates the speed of the enemies
+var distance = 75;//regulates the allowed distance from the enemy
+var playerRange = 100;//regulates the distance player crosses with each keystroke
+var fromWall = 5;//alowed distance of player from the wall
+
+
+allEnemies = [];//stores all of the enemy objects
 
 for (i=1;i<4;i++)
 {allEnemies.push(new Enemy(1,70*i,randomNumber()*enemySpeed))};//creates new enemy objects
 
-var player = new Player(80,300);
+var player = new Player(80,300);//creates the player
+
+function randomNumber() {var number = Math.floor((Math.random() * 10) + 1);return number;}//createas a random number for the enemy speed
 
 
-function randomNumber() {var number = Math.floor((Math.random() * 20) + 1);return number;}
-console.log(randomNumber());
 
-var distance = 75;
-var playerRange = 100;
-var fromWall = 5;
 
-var collision = function()
-{
-     for (item in allEnemies)
-                if( player.x - allEnemies[item].x<distance&&
-                    allEnemies[item].x - player.x<distance&&
-                    player.y - allEnemies[item].y<distance&&
-                    allEnemies[item].y - player.x<distance||
-                    player.y<40 )
-           {reset()}
-}
+
