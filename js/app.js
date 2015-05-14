@@ -101,7 +101,7 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-var enemySpeed = 30;//regulates the speed of the enemies
+var enemySpeed = 20;//regulates the speed of the enemies
 allEnemies = [];
 
 for (i=1;i<4;i++)
