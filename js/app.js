@@ -18,9 +18,11 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x = this.x+this.speed*dt;
-    
     if(this.x>505)
         {this.x=1}
+    //Keeps the enemy objects moving
+    //resets them when they come
+    //to the edge of the screen
 }
 
 // Draw the enemy on the screen, required method for game
@@ -41,6 +43,7 @@ var Player = function(x,y) {
     this.sprite = 'images/char-boy.png';
     this.x = x;
     this.y = y;
+    //New Player Class
     
 }
 // Now instantiate your objectjects.
@@ -79,24 +82,14 @@ Player.prototype.handleInput = function(stroke)
 
     }
     
-
+    //This part of code reacts to keystrokes
+    //the length the player moves is defined by playerRange
+    //and the maximum allowed distance from the edge of the canvas
+    //is defined by fromWall
 }
 
-var Award = function(x,y) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
 
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    this.sprite = 'images/Gem Blue.png';
-    this.x = x;
-    this.y = y;
-    
-}
 
-Award.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
@@ -108,18 +101,29 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-var enemySpeed = 30;
+var enemySpeed = 30;//regulates the speed of the enemies
 allEnemies = [];
-playerLocation =[];
+
 for (i=1;i<4;i++)
-{allEnemies.push(new Enemy(3,70*i,randomNumber()*enemySpeed))};
+{allEnemies.push(new Enemy(1,70*i,randomNumber()*enemySpeed))};//creates new enemy objects
 
 var player = new Player(80,300);
-var award = new Award(20,20);
 
-function randomNumber() {var number = Math.floor((Math.random() * 10) + 1);return number;}
+
+function randomNumber() {var number = Math.floor((Math.random() * 20) + 1);return number;}
 console.log(randomNumber());
 
-var distance = 60;
+var distance = 75;
 var playerRange = 100;
 var fromWall = 5;
+
+var collision = function()
+{
+     for (item in allEnemies)
+                if( player.x - allEnemies[item].x<distance&&
+                    allEnemies[item].x - player.x<distance&&
+                    player.y - allEnemies[item].y<distance&&
+                    allEnemies[item].y - player.x<distance||
+                    player.y<40 )
+           {reset()}
+}
