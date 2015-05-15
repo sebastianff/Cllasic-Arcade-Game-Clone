@@ -1,14 +1,13 @@
 // Enemies our player must avoid
 "use strict";
-var Enemy = function(x,y,z,c) {
+var Enemy = function(x,y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.x = x;
     this.y = y;
-    this.speed = z;
-    this.sprite = c;
+    this.sprite = "images/enemy-bug.png";
 };
 
 // Update the enemy's position, required method for game
@@ -38,18 +37,23 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
-var player = new Enemy(30, 80, 5,"images/char-boy.png");
+var Player = function(x,y)
+{
+    this.x = x;
+    this.y = y;
+    this.sprite = "images/char-boy.png";
+}
 
     // Variables applied to each of our instances go here,
 // Now instantiate your objectjects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-player.render = function() {
+Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-player.update = function(dt) {
+Player.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -60,7 +64,7 @@ player.update = function(dt) {
 // This listens for key presses and sends the keys to your
 // player.handleInput() method. You don't need to modify this.
 
-player.handleInput = function(stroke)
+Player.prototype.handleInput = function(stroke)
 {
     switch(stroke)
     {
@@ -102,9 +106,9 @@ var playerRange = 100;//regulates the distance player crosses with each keystrok
 var fromWall = 5;//alowed distance of player from the wall
 
 var allEnemies = [];//stores all of the enemy objects
-
+var player = new Player(10,20);
 for (var i = 1;i < 4; i++){
-    allEnemies.push(new Enemy(1, 70*i, randomNumber()*enemySpeed, "images/enemy-bug.png"));
+    allEnemies.push(new Enemy(1, 70*i);
 }//creates new enemy objects
 
 
