@@ -1,7 +1,5 @@
 // Enemies our player must avoid
 "use strict";
-var ctx;
-var Resources;
 var Enemy = function(x,y,z,c) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -24,7 +22,7 @@ Enemy.prototype.update = function(dt) {
     if(this.x > 505){
         this.x = 1;
     }
-}; 
+};
 //Keeps the enemy objects moving
     //resets them when they come
     //to the edge of the screen
@@ -41,7 +39,7 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 
 var player = new Enemy(30, 80, 5,"images/char-boy.png");
- 
+
     // Variables applied to each of our instances go here,
 // Now instantiate your objectjects.
 // Place all enemy objects in an array called allEnemies
@@ -55,15 +53,15 @@ player.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    
-    
+
+
 };
 
 // This listens for key presses and sends the keys to your
 // player.handleInput() method. You don't need to modify this.
 
 player.handleInput = function(stroke)
-{   
+{
     switch(stroke)
     {
         case  "left":
@@ -107,11 +105,11 @@ var allEnemies = [];//stores all of the enemy objects
 
 for (var i = 1;i < 4; i++){
     allEnemies.push(new Enemy(1, 70*i, randomNumber()*enemySpeed, "images/enemy-bug.png"));
-    }//creates new enemy objects
+}//creates new enemy objects
 
 
 
 function randomNumber() {
     var number = Math.floor((Math.random() * 10) + 1);
     return number;
-    }//createas a random number for the enemy speed
+}//createas a random number for the enemy speed

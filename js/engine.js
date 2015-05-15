@@ -14,9 +14,9 @@
  * a little simpler to work with.
  */
 var allEnemies;
-  var player;
-  var distance;
-  var Resources;
+var player;
+var distance;
+var Resources;
 var Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
@@ -165,7 +165,7 @@ var Engine = (function(global) {
         });
 
         player.render();
-       
+
     }
 
     /* This function does nothing but it could have been a good place to
