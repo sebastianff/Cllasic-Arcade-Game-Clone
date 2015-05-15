@@ -83,15 +83,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        for (var item in allEnemies)
-                if( player.x - allEnemies[item].x < distance &&
-                    allEnemies[item].x - player.x < distance &&
-                    player.y - allEnemies[item].y < distance &&
-                    allEnemies[item].y - player.x < distance ||
-                    player.y < 40 )
-           {reset();}
-                //this part of code checks for collisons
-                //the allowed distance from the enemy is defined by distance
+
     }
 
 
@@ -173,7 +165,7 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        player.x = 200;player.y =400;//resets the players position when the other side is reached or when coliding with the enemy
+
     }
 
     /* Go ahead and load all of the images we know we're going to need to

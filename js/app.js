@@ -1,12 +1,14 @@
 // Enemies our player must avoid
 "use strict";
-var Enemy = function(x,y) {
+var ctx;
+var Enemy = function(x,y,z) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.x = x;
     this.y = y;
+    this.speed = z;
     this.sprite = "images/enemy-bug.png";
 };
 
@@ -42,9 +44,9 @@ var Player = function(x,y)
     this.x = x;
     this.y = y;
     this.sprite = "images/char-boy.png";
-}
+};
 
-    // Variables applied to each of our instances go here,
+// Variables applied to each of our instances go here,
 // Now instantiate your objectjects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -58,7 +60,15 @@ Player.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 
-
+     for (var item in allEnemies)
+                if( player.x - allEnemies[item].x < distance &&
+                    allEnemies[item].x - player.x < distance &&
+                    player.y - allEnemies[item].y < distance &&
+                    allEnemies[item].y - player.x < distance ||
+                    player.y < 1 )
+           {player.reset();}
+                //this part of code checks for collisons
+                //the allowed distance from the enemy is defined by distance
 };
 
 // This listens for key presses and sends the keys to your
@@ -88,6 +98,9 @@ Player.prototype.handleInput = function(stroke)
     //is defined by fromWall
 };
 
+Player.prototype.reset = function(){
+    player.x = 200;player.y =400;//resets the players position when the other side is reached or when coliding with the enemy
+};
 
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
@@ -100,15 +113,16 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-var enemySpeed = 60;//regulates the speed of the enemies
+var enemySpeed = 80;//regulates the speed of the enemies
 var distance = 75;//regulates the allowed distance from the enemy
-var playerRange = 100;//regulates the distance player crosses with each keystroke
+var playerRange = 25;//regulates the distance player crosses with each keystroke
 var fromWall = 5;//alowed distance of player from the wall
 
 var allEnemies = [];//stores all of the enemy objects
 var player = new Player(10,20);
+
 for (var i = 1;i < 4; i++){
-    allEnemies.push(new Enemy(1, 70*i);
+    allEnemies.push(new Enemy(10, 70*i,40*randomNumber()));
 }//creates new enemy objects
 
 
