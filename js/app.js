@@ -102,8 +102,7 @@ Player.prototype.handleInput = function(stroke)
     }
     //This part of code reacts to keystrokes
     //the length the player moves is defined by playerRange
-    //and the maximum allowed distance from the edge of the canvas
-    //is defined by fromWall
+
 };
 
 Player.prototype.reset = function(){
@@ -125,7 +124,7 @@ var enemySpeed = 50;//regulates the speed of the enemies
 var distance = 75;//regulates the allowed distance from the enemy
 var playerRangeX = 100;//regulates the distance player crosses with each keystroke
 var playerRangeY= 83;//regulates the distance player crosses with each keystroke
-var fromWall = 0;//alowed distance of player from the wall
+
 
 var allEnemies = [];//stores all of the enemy objects
 var player = new Player(10,20);
