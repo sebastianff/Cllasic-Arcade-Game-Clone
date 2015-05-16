@@ -56,19 +56,19 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+// You should multiply any movement by the dt parameter
+// which will ensure the game runs at the same speed for
+// all computers.
 
-     for (var item in allEnemies)
-                if( player.x - allEnemies[item].x < distance &&
-                    allEnemies[item].x - player.x < distance &&
-                    player.y - allEnemies[item].y < distance &&
-                    allEnemies[item].y - player.x < distance ||
-                    player.y < 1 )
-           {player.reset();}
-                //this part of code checks for collisons
-                //the allowed distance from the enemy is defined by distance
+    for (var item in allEnemies)
+        if( player.x - allEnemies[item].x < distance &&
+            allEnemies[item].x - player.x < distance &&
+            player.y - allEnemies[item].y < distance &&
+            allEnemies[item].y - player.x < distance ||
+            player.y < 1 )
+            {player.reset();}
+            //this part of code checks for collisons
+            //the allowed distance from the enemy is defined by distance
 };
 
 // This listens for key presses and sends the keys to your
@@ -79,16 +79,24 @@ Player.prototype.handleInput = function(stroke)
     switch(stroke)
     {
         case  "left":
-        if (this.x - fromWall > 0){this.x = this.x - playerRange;}
+        if (this.x > 0){
+            this.x = this.x - playerRangeX;
+        }
         break;
         case "right":
-         if (this.x + fromWall < 400){this.x = this.x + playerRange;}
+         if (this.x < 400){
+            this.x = this.x + playerRangeX;
+        }
         break;
         case "down":
-        if (this.y + fromWall < 490){this.y = this.y + playerRange;}
+        if (this.y < 400){
+        this.y = this.y + playerRangeY;
+        }
         break;
         case "up":
-        if (this.y - fromWall > 0){this.y = this.y - playerRange;}
+        if (this.y > 0){
+        this.y = this.y - playerRangeY;
+        }
         break;
 
     }
@@ -100,7 +108,7 @@ Player.prototype.handleInput = function(stroke)
 
 Player.prototype.reset = function(){
     player.x = 200;player.y =400;//resets the players position when the other side is reached or when coliding with the enemy
-};
+}
 
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
@@ -113,10 +121,11 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-var enemySpeed = 80;//regulates the speed of the enemies
+var enemySpeed = 50;//regulates the speed of the enemies
 var distance = 75;//regulates the allowed distance from the enemy
-var playerRange = 25;//regulates the distance player crosses with each keystroke
-var fromWall = 5;//alowed distance of player from the wall
+var playerRangeX = 100;//regulates the distance player crosses with each keystroke
+var playerRangeY= 83;//regulates the distance player crosses with each keystroke
+var fromWall = 0;//alowed distance of player from the wall
 
 var allEnemies = [];//stores all of the enemy objects
 var player = new Player(10,20);
