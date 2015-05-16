@@ -122,8 +122,8 @@ document.addEventListener('keyup', function(e) {
 
 var enemySpeed = 50;//regulates the speed of the enemies
 var distance = 75;//regulates the allowed distance from the enemy
-var playerRangeX = 100;//regulates the distance player crosses with each keystroke
-var playerRangeY= 83;//regulates the distance player crosses with each keystroke
+var playerRangeX = 100;//regulates the horizontal distance player crosses with each keystroke
+var playerRangeY= 83;//regulates the vertical distance player crosses with each keystroke
 
 
 var allEnemies = [];//stores all of the enemy objects
