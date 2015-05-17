@@ -79,23 +79,23 @@ Player.prototype.handleInput = function(stroke)
     switch(stroke)
     {
         case  "left":
-        if (this.x > 0){
-            this.x = this.x - playerRangeX;
+            if (this.x > 0){
+                this.x = this.x - playerRangeX;
         }
         break;
         case "right":
-         if (this.x < 400){
-            this.x = this.x + playerRangeX;
+            if (this.x < 400){
+                this.x = this.x + playerRangeX;
         }
         break;
         case "down":
-        if (this.y < 400){
-        this.y = this.y + playerRangeY;
+            if (this.y < 400){
+                this.y = this.y + playerRangeY;
         }
         break;
         case "up":
-        if (this.y > 0){
-        this.y = this.y - playerRangeY;
+            if (this.y > 0){
+                this.y = this.y - playerRangeY;
         }
         break;
 
@@ -107,7 +107,7 @@ Player.prototype.handleInput = function(stroke)
 
 Player.prototype.reset = function(){
     player.x = 200;player.y =400;//resets the players position when the other side is reached or when coliding with the enemy
-}
+};
 
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
