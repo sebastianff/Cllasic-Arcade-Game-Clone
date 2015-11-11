@@ -1,3 +1,5 @@
+Author: Sebastian Farago
+Link: http://sebastianff.github.io/FEND-classic-arcade-game-clone/
 The game is initiated by opening the index.html in your browser.
 The goal of the game is to get to the other side of the screen
 while avoiding bugs.
